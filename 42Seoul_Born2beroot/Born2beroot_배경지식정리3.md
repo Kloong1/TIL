@@ -7,7 +7,7 @@ Red Hat이 개발한 Linux 배포판. 18~24개월에 한 번씩 새로운 버전
 
 
 ## CentOS (Community Enterprise Operating System)
-Red Hat이 공개한 RHEL을 그대로 가져와서 Red Hat의 브랜드와 로고만 제거하고 배포한 배포본. 사실상 RHEL 의 소스를 그대로 사용하고 있기에 RHEL 과 OS 버전, Kernel 버전, 패키지 구성이 똑같고 바이너리가 100%로 호환된다. 무료로 사용 가능하지만 문제 발생시 Red Hat의 기술 지��을 받을 수 없고, 커뮤니티를 통해 기술 지원을 받아야 한다.
+Red Hat이 공개한 RHEL을 그대로 가져와서 Red Hat의 브랜드와 로고만 제거하고 배포한 배포본. 사실상 RHEL 의 소스를 그대로 사용하고 있기에 RHEL 과 OS 버전, Kernel 버전, 패키지 구성이 똑같고 바이너리가 100%로 호환된다. 무료로 사용 가능하지만 문제 발생시 Red Hat의 기술 지��을 받을 수 없고, 커뮤니티를 통해 기술 지원을 받아야 한다.
 
 
 ## Debian
@@ -73,4 +73,7 @@ LSM은 리눅스 커널이 단일한 보안 구현을 피하면서 다양한 컴
 
 출처
 https://ko.wikipedia.org/wiki/%EB%A6%AC%EB%88%85%EC%8A%A4_%EB%B3%B4%EC%95%88_%EB%AA%A8%EB%93%88
-�
+
+
+#### Tag
+[[42Seoul]] [[Born2beroot]]

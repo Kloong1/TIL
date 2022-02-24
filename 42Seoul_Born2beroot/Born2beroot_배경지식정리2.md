@@ -90,3 +90,7 @@ apt 내부적으로는 dpkg 소프트웨어를 사용한다고 한다.
 출처
 https://ko.wikipedia.org/wiki/Dpkg
 https://linuxhint.com/debian_package_managers/부
+
+
+#### Tag
+[[42Seoul]] [[Born2beroot]]
