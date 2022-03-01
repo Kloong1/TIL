@@ -9,7 +9,7 @@ https://start.spring.io/
 
 Spring에서 운영하고 있는 사이트. 프로젝트를 직접 만드는 것이 아니라, Spring initializr를 이용해서 Spring Boot 기반의 프로젝트를 만들 수 있음. 프로젝트 초기 세팅을 다 해주기 때문에 이 사이트를 이용해서 만드는 것이 편리하다.
 
-프로젝트 설정을 마친 뒤 Generate를 하면 압축 파일이 다운로드 된다. 압축을 풀면 나오는 파일 중 build.gradle 이 있는데, IDE로 해당 파일을 project로 열면 된다.
+프로젝트 설정을 마친 뒤 Generate를 하면 압축 파일이 다운로드 된다. 압축을 풀면 나오는 파일 중 `build.gradle` 이 있는데, IDE로 해당 파일을 project로 열면 된다.
 
 ### Maven & Gradle
 Dependency가 있는 라이브러리를 땡겨와주고, 빌드도 도와주는 툴.
@@ -27,7 +27,7 @@ resources 폴더에는 java 파일 외의 다른 파일들이 들어있다.
 아직은 build 설정에 대한 파일이라고만 알고 있으면 된다. Spring initializr에서 이 파일을 따로 만들어 주는 것이다. 원래는 프로그래머가 직접 작성해야 했다고 함. Spring 버전, dependency 목록 등의 내용을 확인할 수 있다.
 
 ### 기타
-.gitignore, setting.gradle 등
+`.gitignore`, `setting.gradle` 등
 
 
 ## 3.  프로젝트 실행
