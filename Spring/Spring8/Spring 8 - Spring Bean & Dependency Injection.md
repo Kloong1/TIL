@@ -1,4 +1,4 @@
-# Spring 8 - Spring Bean & Dependency Injection
+# Spring Bean & Dependency Injection
 
 ## 1. Spring bean 등록, 의존 관계 설정
 여태까지 개발한 것을 토대로 사용자가 웹을 통해서 서비스를 이용할 수 있게 만들어야 한다. 그러기 위해서는 `MemberController`를 만들고, `MemberController`가 `MemberService`를 통해서 회원 가입, 회원 조회 등의 기능을 수행할 수 있게 해야한다. 이것을 **\"MemberController가 MemberService를 의존한다\"** 고 한다.
@@ -55,7 +55,7 @@ public class MemberController
 }
 ```
 
-MemberController에서 MemberService 객체를 사용해야 하는데, MemberController는 Spring에 의해 Spring bean으로 관리되고 있고, MemberService도 마찬가지이다 (아직 설정은 해주지 않았지만 다른 Controller에서 사용해야 하므로 MemberService 역시 Spring에서 관리되게끔 해줘야 한다).
+MemberController에서 MemberService 객체를 사용해야 하는데, MemberController는 Spring에 의해 Spring bean으로 관리되고 있다.
 
 이런 경우 MemberSerive를 new 연산자로 새로운 인스턴스를 만들어서 사용하는 것이 아니라, Spring bean 형태의 MemberService를 MemberController에서 끌어다 쓸 수 있게끔 해줘야 한다.
 
