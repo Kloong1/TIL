@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<!-- th가 thymeleaf를 의미함. 이렇게 하면 thymeleaf 문법을 쓸 수 있다고 함. -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!-- HelloController에서 model에 추가했던 "data" attribute의 value "hello!!"가 출력된다  -->
+<p th:text="'안녕하세요. ' + ${data}" >안녕하세요. 손님</p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<!-- th가 thymeleaf를 의미함. 이렇게 하면 thymeleaf 문법을 쓸 수 있다고 함. -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello-template</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<!-- 만약 서버 없이 이 파일을 그대로 연다고 했을 때
+ 안녕하세요! empty가 웹 브라우저에 나온다.
+ 서버 없이 해당 html 파일이 어떤 식으로 출력되는지 대략적인 그림을 볼 수 있는 기능이다.
+ 서버를 켜서 실행시키면 안녕하세요! ${name}이 정상 출력된다. -->
+<p th:text="'안녕하세요! ' + ${name}" >안녕하세요! empty</p>
+</body>
+</html>
