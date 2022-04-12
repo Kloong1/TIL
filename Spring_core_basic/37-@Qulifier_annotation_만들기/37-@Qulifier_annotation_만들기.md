@@ -1,4 +1,4 @@
-#
+# @Qulifier annotation 만들기
 `@Qulifier` 를 사용할 때 구분자 이름을 지정해야 한다. 문제는 구분자 이름이 문자열 형태라는 것. `@Qualifier("mainDiscountPolicy") `이렇게 문자열로 구분자를 적으면 컴파일 시 타입 체크가 불가능하다.
 
 다음과 같은 annotation을 만들어서 문제를 해결할 수 있다.
