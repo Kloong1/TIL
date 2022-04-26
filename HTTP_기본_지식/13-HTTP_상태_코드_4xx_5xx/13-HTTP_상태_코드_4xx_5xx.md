@@ -1,4 +1,4 @@
-in# HTTP 상태 코드 4xx 5xx
+# HTTP 상태 코드 4xx 5xx
 
 ## 4xx (Client error)
 - 클라이언트의 HTTP request message에 잘못된 문법 등으로 인한 문제가 있어서, 서버가 요청을 수행할 수 없다.
