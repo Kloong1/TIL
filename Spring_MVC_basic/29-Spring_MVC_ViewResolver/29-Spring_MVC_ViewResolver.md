@@ -21,7 +21,7 @@ public class OldController implements Controller {
 
 이제 Spring Boot로 애플리케이션을 실행시킨 뒤 `http://localhost:8080/springmvc/old-controller` 로 요청을 보내면, `handleRequest()` 는 정상적으로 호출되지만 웹 브라우저에는 `Whitelabel Error Page` 가 나온다.
 
-즉 컨트롤러는 정상적으로 호출 되지만, `new-form` 이라는 논리 이름을 가진 뷰를 찾지 못한 것이다. 논이 이름을 통해 뷰를 찾을 수 있게 만들어보자.
+즉 컨트롤러는 정상적으로 호출 되지만, `new-form` 이라는 논리 이름을 가진 뷰를 찾지 못한 것이다. 논리 이름을 통해 뷰를 찾을 수 있게 만들어보자.
 
 설정 파일인 `application.properties` 에 뷰의 이름에 붙을 prefix와 suffix를 알려주기만 하면 된다.
 
@@ -34,7 +34,8 @@ spring.mvc.view.suffix=.jsp
 Spring Boot로 애플리케이션을 실행시킨 뒤 `http://localhost:8080/springmvc/old-controller` 로 요청을 보내면 `/WEB-INF/views/new-form.jsp` 가 웹 브라우저에 정상적으로 나타나는 것을 확인할 수 있다.
 
 >**참고**
->권장하지는 않지만 `application.properties` 설정 없이 다음과 같이 전체 경로를 주어도 동작하기는 한다. `return new ModelAndView("/WEB-INF/views/new-form.jsp");`
+>권장하지는 않지만 `application.properties` 설정 없이 다음과 같이 전체 경로를 주어도 동작하기는 한다.
+>`return new ModelAndView("/WEB-INF/views/new-form.jsp");`
 
 ### ViewResolver - InternalResourceViewResolver
 Spring Boot는 스프링을 올리면서 `InternalResourceViewResolver` 라는 ViewResolver를 빈으로 등록한다. 이 때 `application.properties`의 `spring.mvc.view.prefix` 와 `spring.mvc.view.suffix` 정보를 사용해서 `InternalResourceViewResolver` 빈을 등록한다.
