@@ -32,7 +32,7 @@ public class MappingController {
 #### 참고
 - 다음 두 가지 요청 URL은 서로 다르다. 하지만 스프링은 이 요청 URL들을 동일하게 매핑한다.
 	- 요청 URL: `/hello-basic` , `/hello-basic/`
-	- 매핑: `hello-basic`
+	- 매핑: `/hello-basic`
 
 
 ## HTTP Method 지정 매핑
