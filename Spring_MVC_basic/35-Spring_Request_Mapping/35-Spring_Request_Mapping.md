@@ -158,7 +158,7 @@ public String mappingConsumes() {
 ```
 - HTTP 요청의 `Content-Type` 헤더의 값, 즉 미디어 타입으로 매핑이 가능하다.
 - HTTP 헤더 매핑에서 `@PostMapping(value = "/mapping-header", headers = "Content-Type=application/json")` 하는 것과 다르다.
-	- Spring에서 내부적으로 처리하는 것이 있기 때문에, `Content-Type` 헤더를 조건으로 매핑하려면 반드시 `consume` 을 쓰자.
+	- Spring에서 내부적으로 처리하는 것이 있기 때문에, `Content-Type` 헤더를 조건으로 매핑하려면 `headers` 대신 `consumes` 을 쓰자.
 - 만약 `Content-Type` 헤더의 값이 조건과 맞지 않으면 HTTP 415 상태 코드(Unsupported Media Type)를 반환한다.
 
 
@@ -177,7 +177,7 @@ public String mappingProduces() {
 	return "OK";
 }
 ```
-- `consume` 처럼 미디어 타입에 대한 조건이지만 주체가 다르다.
-	- `produce` 는 클라이언트가 받기를 원하는 미디어 타입, 즉 `Accept` 헤더에 대한 조건이다.
-	- `consume` 은 서버가 받기를 원하는 미디어 타입에 대한 조건이었다.
+- `consumes` 처럼 미디어 타입에 대한 조건이지만 주체가 다르다.
+	- `produces` 는 클라이언트가 받기를 원하는 미디어 타입, 즉 `Accept` 헤더에 대한 조건이다.
+	- `consumes` 은 서버가 받기를 원하는 미디어 타입에 대한 조건이었다.
 - 만약 `Accept` 헤더의 값이 조건과 맞지 않으면 HTTP 406 상태 코드(Not Acceptable)를 반환한다.
