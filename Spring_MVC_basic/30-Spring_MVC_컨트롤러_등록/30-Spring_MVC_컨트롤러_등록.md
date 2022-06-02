@@ -131,6 +131,10 @@ mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
 
 **그랬더니 정상 동작한다!** `RequestMappingHandlerAdapter` 에서 핸들러를 호출할 때, 필요한 매개변수를 확인해서 잘 호출하는 그런 코드가 있는 것으로 추정된다.
 
+>2022-05-02 추가
+>매개변수를 이렇게 자유롭게 사용할 수 있는 이유는 Spring MVC의 컨트롤러가 애노테이션 기반이기 때문이다. `@Controller` 에서 사용 가능한 파라미터 목록은 Spring 도큐먼트에서 확인할 수 있다.
+>https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-annarguments
+
 ### 회원 목록 Controller
 ##### SpringMemberListControllerVer1.java
 ```Java
