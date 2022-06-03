@@ -88,7 +88,7 @@ public String requestBodyJsonVer4(HttpEntity<HelloData> helloData) throws IOExce
 
 
 ## 객체를 JSON으로 자동 변환하여 응답
-`@ResponseBody` 와 함께 임의의 타입의 객체를 반환하면, `HttpMessageConvertor` 가 JSON으로 변환해서 메시지 바디에 넣어준다. 물론 이 경우에도 `HttpEntity` 를 사용할 수 있다.
+`@ResponseBody` 와 함께 임의의 타입의 객체를 반환하면, `HttpMessageConverter` 가 JSON으로 변환해서 메시지 바디에 넣어준다. 물론 이 경우에도 `HttpEntity` 를 사용할 수 있다.
 
 ##### RequestBodyJsonController.java 일부
 ```Java

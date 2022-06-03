@@ -141,11 +141,11 @@ Spring Boot의 log를 살펴보면 (IDE에서 실행시키면 계속 찍히는 �
  1. 웹브라우저가 `localhost:8080/hello-api?name=yohkim` 요청을 보낸다.
  2. 내장 Tomcat 서버가 Spring으로 `hello-api` 에 대한 요청이 왔다고 넘겨준다.
  3. `GetMapping("hello-api")` 에 의해 `helloAPI` method가 호출되고, method가 `Hello` 객체를 반환한다.
- 4. `@ResponseBody` annotation에 의해 Spring은 view를 찾지 않고 (`viewResolver`가 동작하지 않는다)  `HttpMessageConvertor` 를 호출한다.
- 5. `HttpMessageConvertor` 에는 String을 처리하는 `StringHttpMessageConvertor`, 객체를 처리하는 `MappingJackson2HttpMessageConvertor` 등이 기본으로 등록되어 있다. 여기서는 `Hello` 객체를 반환하므로 `MappingJackson2HttpMessageConvertor` 가 호출되어 `Hello` 객체를 JSON으로 변환하여 ({name : "yohkim"}) 클라이언트에게 넘겨준다.
+ 4. `@ResponseBody` annotation에 의해 Spring은 view를 찾지 않고 (`viewResolver`가 동작하지 않는다)  `HttpMessageConverter` 를 호출한다.
+ 5. `HttpMessageConverter` 에는 String을 처리하는 `StringHttpMessageConverter`, 객체를 처리하는 `MappingJackson2HttpMessageConverter` 등이 기본으로 등록되어 있다. 여기서는 `Hello` 객체를 반환하므로 `MappingJackson2HttpMessageConverter` 가 호출되어 `Hello` 객체를 JSON으로 변환하여 ({name : "yohkim"}) 클라이언트에게 넘겨준다.
 
-\*`MappingJackson2HttpMessageConvertor` 에서 Jackson은 객체를 JSON 형태로 변환해주는 라이브러리이다. Jackson 말고도 구글에서 만든 GSON이 있다.
+\*`MappingJackson2HttpMessageConverter` 에서 Jackson은 객체를 JSON 형태로 변환해주는 라이브러리이다. Jackson 말고도 구글에서 만든 GSON이 있다.
 
-\*\*최근에는 JSON을 사용하는 것이 일반적이고, Spring에서도 기본적으로 JSON으로 변환해서 데이터를 넘겨주게끔 되어 있다. 하지만 레거시 프로젝트의 경우 간혹 XML을 사용하는 경우가 있는데, 이런 경우에는 설정을 해주면 JSON대신 XML 형태로 변환을 해서 넘겨줄 수 있다고 한다. 아니면 HttpMessageConvertor를 직접 만들어서 원하는 형태로 데이터를 넘겨줄 수 있다고 하는데, 실무에서는 거의 건드리지 않는다고 한다.
+\*\*최근에는 JSON을 사용하는 것이 일반적이고, Spring에서도 기본적으로 JSON으로 변환해서 데이터를 넘겨주게끔 되어 있다. 하지만 레거시 프로젝트의 경우 간혹 XML을 사용하는 경우가 있는데, 이런 경우에는 설정을 해주면 JSON대신 XML 형태로 변환을 해서 넘겨줄 수 있다고 한다. 아니면 HttpMessageConverter를 직접 만들어서 원하는 형태로 데이터를 넘겨줄 수 있다고 하는데, 실무에서는 거의 건드리지 않는다고 한다.
 
-\*\*\*`HttpMessageConvertor` 는 클라이언트 request의 HTTP Accept 헤더와 서버의 컨트롤러의 반환 타입 (method의 반환 타입) 정보 등을 조합해서 선택된다. 예를 들어 HTTP Accept 헤더에 XML만 받을 수 있다고 되어있으면, XML로 변환하는 convertor가 선택된다.
+\*\*\*`HttpMessageConverter` 는 클라이언트 request의 HTTP Accept 헤더와 서버의 컨트롤러의 반환 타입 (method의 반환 타입) 정보 등을 조합해서 선택된다. 예를 들어 HTTP Accept 헤더에 XML만 받을 수 있다고 되어있으면, XML로 변환하는 converter가 선택된다.
