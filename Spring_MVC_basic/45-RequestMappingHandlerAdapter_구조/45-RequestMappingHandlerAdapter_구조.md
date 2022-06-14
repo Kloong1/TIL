@@ -61,10 +61,14 @@ public interface HandlerMethodArgumentResolver {
 `HttpMessageConverter`는 바로 `ArgumentResolver` 와 `ReturnValueHandler` 가 사용한다.
 
 #### 요청 - ArgumentResolver
-`@RequestBody` 를 처리하는 `ArgumentResolver` 가 있고, `HttpEntity` 를 처리하는 `ArgumentResolver` 가 있다. 이 `ArgumentResolver` 들이 `HttpMessageConverter`를 사용해서 필요한 객체를 생성하는 것이다.
+- `@RequestBody` 를 처리하는 `ArgumentResolver`
+- `HttpEntity` 를 처리하는 `ArgumentResolver`
+- 이 두 `ArgumentResolver` 들이 `HttpMessageConverter`를 사용해서 필요한 객체를 생성한다.
 
 #### 응답 - ReturnValueHandler
-`@ResponseBody` 와 `HttpEntity` 를 처리하는 `ReturnValueHandler` 가 있다. 여기에서 `HttpMessageConverter` 를 호출해서 응답 결과를 만든다.
+- `@ResponseBody` 를 처리하는 `ReturnValueHandler`
+-  `HttpEntity` 를 처리하는 `ReturnValueHandler`
+- 이 두 `ReturnValueHandler` 가 `HttpMessageConverter` 를 호출해서 응답 결과를 만든다.
 
 스프링 MVC는 `@RequestBody` `@ResponseBody` 가 있으면 `RequestResponseBodyMethodProcessor`, 
 `HttpEntity` 가 있으면 `HttpEntityMethodProcessor` 를 사용한다. 두 클래스는 `ArgumentResolver`, `ReturnValueHandler` 두 역할을 모두 수행한다. 실제로 두 인터페이스를 모두 구현한 것을 확인할 수 있다.
