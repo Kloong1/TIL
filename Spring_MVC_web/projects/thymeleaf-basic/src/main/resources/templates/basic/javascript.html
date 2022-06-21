@@ -8,22 +8,33 @@
 
 <!-- 자바스크립트 인라인 사용 전 -->
 <script>
-    var username = [[${user.username}]];
-    var age = [[${user.age}]];
+    var username = [[${user.username}]]; //userA -> 문자열 아니므로 자바스크립트 오류
+    var age = [[${user.age}]]; //10
+
     //자바스크립트 내추럴 템플릿
     var username2 = /*[[${user.username}]]*/ "test username";
+
     //객체
-    var user = [[${user}]];
+    var user = [[${user}]]; //toString() 호출 결과 -> 자바스크립트 오류
 </script>
 
 <!-- 자바스크립트 인라인 사용 후 -->
 <script th:inline="javascript">
     var username = [[${user.username}]];
     var age = [[${user.age}]];
+
     //자바스크립트 내추럴 템플릿
     var username2 = /*[[${user.username}]]*/ "test username";
+
     //객체
     var user = [[${user}]];
+</script>
+
+<!-- 자바스크립트 인라인 each -->
+<script th:inline="javascript">
+    [# th:each="user : ${users}"]
+    var user[[${userStat.count}]] = [[${user}]];
+    [/]
 </script>
 
 </body>
