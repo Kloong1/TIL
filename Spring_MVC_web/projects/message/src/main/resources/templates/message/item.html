@@ -15,27 +15,27 @@
 <div class="container">
 
     <div class="py-5 text-center">
-        <h2>상품 상세</h2>
+        <h2 th:text="#{page.item}">상품 상세</h2>
     </div>
 
     <!-- 추가 -->
     <h2 th:if="${param.status}" th:text="'저장 완료'"></h2>
 
     <div>
-        <label for="itemId">상품 ID</label>
-        <input type="text" id="itemId" name="itemId" class="form-control" value="1" th:value="${item.id}" readonly>
+        <label for="itemId" th:text="#{label.item.id}">상품 ID</label>
+        <input type="text" id="itemId" th:field="${item.id}" class="form-control" value="1" readonly>
     </div>
     <div>
-        <label for="itemName">상품명</label>
-        <input type="text" id="itemName" name="itemName" class="form-control" value="상품A" th:value="${item.itemName}" readonly>
+        <label for="itemName" th:text="#{label.item.itemName}">상품명</label>
+        <input type="text" id="itemName" th:field="${item.itemName}" class="form-control" value="상품A" readonly>
     </div>
     <div>
-        <label for="price">가격</label>
-        <input type="text" id="price" name="price" class="form-control" value="10000" th:value="${item.price}" readonly>
+        <label for="price" th:text="#{label.item.price}">가격</label>
+        <input type="text" id="price" th:field="${item.price}" class="form-control" value="10000" readonly>
     </div>
     <div>
-        <label for="quantity">수량</label>
-        <input type="text" id="quantity" name="quantity" class="form-control" value="10" th:value="${item.quantity}" readonly>
+        <label for="quantity" th:text="#{label.item.quantity}">수량</label>
+        <input type="text" id="quantity" th:field="${item.quantity}" class="form-control" value="10" readonly>
     </div>
 
     <hr class="my-4">
@@ -45,13 +45,13 @@
             <button class="w-100 btn btn-primary btn-lg"
                     onclick="location.href='editForm.html'"
                     th:onclick="|location.href='@{/message/items/{itemId}/edit(itemId=${item.id})}'|"
-                    type="button">상품 수정</button>
+                    type="button" th:text="#{page.updateItem}">상품 수정</button>
         </div>
         <div class="col">
             <button class="w-100 btn btn-secondary btn-lg"
                     onclick="location.href='items.html'"
                     th:onclick="|location.href='@{/message/items}'|"
-                    type="button">목록으로</button>
+                    type="button" th:text="#{button.cancel}">목록으로</button>
         </div>
     </div>
 
