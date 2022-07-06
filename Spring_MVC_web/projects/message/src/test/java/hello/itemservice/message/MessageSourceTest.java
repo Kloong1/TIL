@@ -50,7 +50,6 @@ public class MessageSourceTest {
     @Test
     void enLang() {
         assertThat(messageSource.getMessage("hello", null, Locale.ENGLISH)).isEqualTo("hello");
-        assertThat(messageSource.getMessage("hello", null, Locale.ENGLISH)).isEqualTo("hello");
         assertThat(messageSource.getMessage("hello.name", new Object[]{"Spring"}, Locale.ENGLISH)).isEqualTo("hello Spring");
     }
 }
