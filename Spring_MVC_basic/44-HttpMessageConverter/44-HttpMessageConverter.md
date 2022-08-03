@@ -16,7 +16,7 @@ HTTP API의 경우처럼 JSON 데이터를 HTTP 메시지 바디에서 직접 �
 
 
 #### Spring MVC는 다음의 경우에 HttpMessageConverter를 적용한다
-- HTTP 요청: `@RequestBody` 또는 `HttpEntity`, `ResponseEntity` 를 사용하는 경우
+- HTTP 요청: `@RequestBody` 또는 `HttpEntity`, `RequestEntity` 를 사용하는 경우
 - HTTP 응답: `@ResponseBody` 또는  `HttpEntity`, `ResponseEntity`  를 사용하는 경우
 
 
@@ -58,7 +58,7 @@ public interface HttpMessageConverter<T> {
 2 = MappingJackson2HttpMessageConverter
 ... (일부 생략)
 ```
-- Spring Boot는 다양한 메시지 컨버터를 기본으로 제공하는데
+- Spring Boot는 다양한 메시지 컨버터를 기본으로 제공한다.
 - 대상 클래스 타입과 미디어 타입 둘을 체크해서 어떤 메시지 컨버터를 사용할지 결정한다.
 	- 미디어 타입
 		- HTTP 요청의 경우: `Content-Type` 헤더
