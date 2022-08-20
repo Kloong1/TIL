@@ -117,3 +117,149 @@ Bean Validation에서 특정 필드( `FieldError` )가 아닌 해당 오브젝�
 따라서 오브젝트 오류의 경우 검증 코드를 직접 작성하는 것을 권장한다.
 
 
+## Bean Validation 적용 대상 설정 - Groups
+
+```Java
+public class Item {
+
+	@NotNull
+	private Long id;
+	
+	@NotBlank
+	private String itemName;
+	
+	@NotNull
+	@Range(min = 1000, max = 1000000)
+	private Integer price;
+	
+	@NotNull
+	@Max(9999)
+	private Integer quantity;
+	
+	//...
+}
+```
+
+컨트롤러에서 `@Validated @ModelAttribute Item` 객체에 대해서 위와 같은 검증 어노테이션으로 bean validation을 한다고 하자.
+
+그런데 만약 사용자로부터 새로운 `Item` 정보를 입력 받아서 저장할 때는 `id` 필드를 비어있는 채로 넘겨 받아서 서버에서 `id` 값을 부여하고, 수정할 때는 반드시 기존의 `id` 값을 넘겨 받아야 하는 ( `@NotNull` 을 적용해야 하는) 상황이라면 어떻게 해야 할까?
+
+```Java
+@PostMapping("/add")
+public String addItem(@Validated @ModelAttribute Item item, 생략) {
+	//생략
+}
+
+@PostMapping("/{itemId}/edit")
+public String edit(@PathVariable Long itemId,
+				   @Validated @ModelAttribute Item item, 생략) {
+	//생략
+}
+```
+
+Bean validation을 이용하기 때문에 저장과 수정 컨트롤러 메소드에서 `@Validated` 를 동일하게 적용했다.
+
+문제는 두 경우의 검증 로직이 다른 상황이라는 것이다.
+
+**이런 상황에서 bean validation의 Groups 기능을 사용할 수 있다.**
+
+Groups 기능을 적용하기 위해 저장과 수정에 대한 더미 클래스 (인터페이스) 두 개를 만든다.
+
+```Java
+package hello.itemservice.domain.item;
+public interface SaveCheck {}
+```
+
+```Java
+package hello.itemservice.domain.item;
+public interface EditCheck {}
+```
+
+그리고 더미 클래스를 사용해서 `Item` 클래스의 검증 어노테이션에 `groups` 속성을 적용한다.
+
+```Java
+@Data
+public class Item {
+	@NotNull(groups = EditCheck.class) //수정시에만 적용
+	private Long id;
+	
+	@NotBlank(groups = {SaveCheck.class, EditCheck.class})
+	private String itemName;
+	
+	@NotNull(groups = {SaveCheck.class, EditCheck.class})
+	@Range(min = 1000, max = 1000000,
+			groups = {SaveCheck.class, EditCheck.class})
+	private Integer price;
+	
+	@NotNull(groups = {SaveCheck.class, EditCheck.class})
+	@Max(value = 9999, groups = SaveCheck.class) //등록시에만 적용
+	private Integer quantity;
+}
+```
+
+그리고 컨트롤러 메소드의 `@Validated` 어노테이션을 다음과 같이 수정한다.
+
+```Java
+@PostMapping("/add")
+public String addItem(@Validated(SaveCheck.class) @ModelAttribute Item item,
+													  생략) {
+	//생략
+}
+
+@PostMapping("/{itemId}/edit")
+public String edit(@PathVariable Long itemId,
+				   @Validated(EditCheck.class) @ModelAttribute Item item, 생략) {
+	//생략
+}
+```
+
+이렇게 하면 `Item` 의 검증 어노테이션의 `groups` 속성값인 더미 클래스를 `value` 로 가지는 `@Validated` 어노테이션에만 해당 검증 로직이 적용된다.
+
+간단히 말하면 `id` 에 적용된 `@NotNull` 검증 로직은 수정 컨트롤러 메소드의 `Item` 객체에만 적용된다는 것이다. 나머지 필드와 검증 어노테이션에도 동일한 방식으로 `groups` 기능이 적용된다.
+
+
+## 도메인 객체와 DTO 객체 분리
+실무에서는 bean validation의 groups 기능을 잘 사용하지 않는다. 왜냐하면 사용자가 전달하는 데이터가 실제 도메인 객체의 필드와 일치하지 않는 경우가 대부분이기 때문이다.
+
+그래서 보통 사용자 입력을 도메인 객체에 직접 바인딩하는 것이 아니라, 별도의 DTO 객체에 바인딩해서 컨트롤러에 전달한다.
+
+## Bean Validation 과 `@RequestBody`
+
+`@Valid` , `@Validated` 는 `@ModelAttribute` 뿐만 아니라 `@RequestBody` 로 전달받는 객체에도 적용할 수 있다.
+
+>참고: `@ModelAttribute` 와 `@RequestBody`
+>`@ModelAttribute` 는 HTTP 요청 파라미터(URL 쿼리 스트링, HTML Form)를 다룰 때 사용한다. `@RequestBody` 는 HTTP Body의 데이터를 객체로 변환할 때 사용한다. 주로 API JSON 요청을 다룰 때 사용한다.
+
+```Java
+@PostMapping("/add")
+public Object addItem(@Validated @RequestBody ItemSaveForm form,
+						BindingResult bindingResult) {
+	//생략
+}
+```
+
+**HTTP Request 메시지 바디 예시 - 성공**
+```
+POST http://localhost:8080/validation/api/items/add
+{"itemName":"hello", "price":1000, "quantity": 10}
+```
+
+JSON 형태의 HTTP 메시지 바디가 `HttpMessageConverter` 에 의해 `ItemSaveForm` 객체에 바인딩 되고, `@Validated` 에 의해 bean validator가 동작해서 검증 로직을 수행한다.
+
+JSON 형태의 API 요청의 경우 다음과 같이 3가지 경우를 구분해서 생각해야 한다.
+- 올바른 JSON 형태의 데이터: 객체 바인딩 성공. 검증 로직 수행.
+- 올바르지 않은 JSON 형태의 데이터: JSON을 객체로 바인딩 하는 것 자체가 실패. 검증 로직 수행하지 못하고 예외 발생.
+- 검증 오류를 유발하는 데이터: JSON을 객체로 바인딩하는 것은 성공했고, 검증에서 실패함.
+
+다음과 같은 요청은 타입에 의한 변환 문제 때문에 `HttpMessageConverter` 가 객체 변환에 실패하고, 검증 로직이 아예 수행되지 않고 예외가 터진다.
+
+**HTTP Request 메시지 바디 예시 - 객체 변환 실패**
+```
+POST http://localhost:8080/validation/api/items/add
+{"itemName":"hello", "price":"A", "quantity": 10}
+```
+
+`@ModelAttribute` 는 필드 단위로 정교하게 바인딩이 적용된다. 특정 필드가 바인딩 되지 않아도 나머지 필드는 정상 바인딩 되고, bean validator를 사용한 검증도 적용할 수 있다.
+
+`@RequestBody` 는 `HttpMessageConverter` 가 JSON 데이터를 객체로 변경하는데 실패하면 이후
+단계 자체가 진행되지 않고 **예외가 발생한다.** 컨트롤러도 호출되지 않고, bean validator도 적용할 수 없다.
