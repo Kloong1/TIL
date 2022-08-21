@@ -56,9 +56,9 @@ implementation 'org.springframework.boot:spring-boot-starter-validation'
 >검증 어노테이션을 사용하다 보면 `javax.validation` 패키지에 있는 어노테이션이 있고, `org.hibernate.validator` 에 있는 어노테이션도 있다.
 >`javax.validation` 은 구현체에 관계없이 제공되는 표준 인터페이스이고, `org.hibernate.validator` 로 시작하면 하이버네이트 validator 구현체를 사용할 때만 제공되는 검증 기능이다. 실무에서 대부분 하이버네이트 validator를 사용하므로 자유롭게 사용해도 된다.
 
-`spring-boot-starter-validation` 의존관계를 추가하면 스프링 부트가 자동으로 Bean validator를 인지하고 스프링에 통합한다.
+`spring-boot-starter-validation` 의존관계를 추가하면 스프링 부트가 자동으로 bean validator를 인지하고 스프링에 통합한다.
 
-스프링 부트는 Bean validator를 자동으로 글로벌 validator로 등록한다. 이렇게 글로벌 validator가 적용되어 있기 때문에 검증이 필요한 객체에 `@Valid` , `@Validated` 만 적용하면 된다.
+스프링 부트는 bean validator를 자동으로 글로벌 validator로 등록한다. 이렇게 글로벌 validator가 적용되어 있기 때문에 검증이 필요한 객체에 `@Valid` , `@Validated` 만 적용하면 된다.
 
 검증 오류가 발생하면 `FieldError` , `ObjectError` 를 생성해서 `BindingResult` 에 담아준다.
 
@@ -75,9 +75,9 @@ implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 
 ## Bean Validation 에러 코드 & 에러 메시지
-Bean Validation 이 기본으로 제공하는 오류 메시지 말고 직접 작성한 오류 메시지를 사용할 수 있다.
+Bean Validation이 기본으로 제공하는 오류 메시지 말고 직접 작성한 오류 메시지를 사용할 수 있다.
 
-Bean Validation을 적용하고 검증 오류가 발생하는 입력을 서버에 보낸 뒤 BindingResult 에 등록된 검증 오류를 살펴보면 다음과 같은 메시지 코드를 확인할 수 있다.
+Bean Validation을 적용하고 검증 오류가 발생하는 입력을 서버에 보낸 뒤 `BindingResult` 에 등록된 검증 오류를 살펴보면 다음과 같은 메시지 코드를 확인할 수 있다.
 
 - **`@NotBlank`**
 	- `NotBlank.item.itemName`
