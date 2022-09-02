@@ -110,3 +110,66 @@ public class WebConfig implements WebMvcConfigurer {
 
 이 어노테이션에 대해 알아보기 전에 먼저 스프링 부트가 기본으로 등록하는 `HandlerExceptionResolver` 들에 대해서 알아보자. 그 중에서 `@ExceptionHandler` 를 처리해주는 `HandlerExceptionResolver` 가 있다.
 
+
+## 스프링 부트가 제공하는 HandlerExceptionResolver
+스프링 부트가 기본으로 등록하는 `HandlerExceptionResolver` 는 다음과 같다. 스프링 부트는 `HandlerExceptionResolverComposite` 에 다음과 같은 우선순위로 등록한다.
+
+1. `ExceptionHandlerExceptionResolver`
+	1. `@ExceptionHandler` 를 처리한다.
+	2. API 예외 처리는 대부분 이 기능으로 해결한다.
+	3. 우선순위가 가장 높다.
+2. `ResponseStatusExceptionResolver`
+	1. 예외가 발생하면 해당 예외에 대한 HTTP 상태 코드를 지정한다.
+3. `DefaultHandlerExceptionResolver`
+	1. 스프링 내부 기본 예외를 처리한다.
+	2. 우선 순위가 가장 낮다.
+
+우선 순위가 낮은 순서대로 알아보자.
+
+### DefaultHandlerExceptionResolver
+스프링 내부에서 발생하는 예외를 처리한다.
+
+대표적으로 파라미터 바인딩 시점에 타입이 맞지 않으면 내부에서 `TypeMismatchException` 이
+발생한다. 해당 예외를 잡아서 처리하지 않으면 서블릿 컨테이너까지 오류가 올라가게 되고, 처리되지 않은 예외가 발생했기 때문에 결과적으로 500 오류가 발생한다.
+
+그런데 파라미터 바인딩이 실패는 대부분 클라이언트가 HTTP 요청 정보를 잘못 호출해서 발생하는 문제이다. HTTP 스펙에서는 이런 경우 상태 코드 400을 사용하도록 되어 있다.
+
+따라서 `DefaultHandlerExceptionResolver` 는 `TypeMismatchException` 이 발생하면 상태 코드 400 오류가 발생하도록 처리해준다.
+
+##### DefaultHandlerExceptionResolver 코드 확인
+```Java
+public class DefaultHandlerExceptionResolver extends AbstractHandlerExceptionResolver {
+@Override
+	@Nullable
+	protected ModelAndView doResolveException(
+			HttpServletRequest request, HttpServletResponse response, 
+								@Nullable Object handler, Exception ex) {
+
+		try {
+			if (ex instanceof HttpRequestMethodNotSupportedException) {
+				return handleHttpRequestMethodNotSupported(
+						(HttpRequestMethodNotSupportedException) ex,
+						request, response, handler);
+			}
+			else if (ex instanceof TypeMismatchException) {
+				return handleTypeMismatch(
+						(TypeMismatchException) ex, request,
+						response, handler);
+			}
+			//다른 수 많은 스프링 내부 에러에 대한 else if (ex instaneof ...) {}
+		}
+		catch (Exception handlerEx) {
+			//생략
+		}
+		return null;
+	}
+	
+	protected ModelAndView handleTypeMismatch(TypeMismatchException ex,
+			HttpServletRequest request, HttpServletResponse response,
+							@Nullable Object handler) throws IOException {
+
+		response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+		return new ModelAndView();
+	}
+}
+```
