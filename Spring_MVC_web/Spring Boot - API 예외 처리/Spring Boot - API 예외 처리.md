@@ -139,7 +139,8 @@ public class WebConfig implements WebMvcConfigurer {
 ##### DefaultHandlerExceptionResolver 코드 확인
 ```Java
 public class DefaultHandlerExceptionResolver extends AbstractHandlerExceptionResolver {
-@Override
+
+	@Override
 	@Nullable
 	protected ModelAndView doResolveException(
 			HttpServletRequest request, HttpServletResponse response, 
@@ -173,3 +174,9 @@ public class DefaultHandlerExceptionResolver extends AbstractHandlerExceptionRes
 	}
 }
 ```
+
+핸들러에서 발생한 예외 객체 `Exception ex` 를 넘겨 받는다.
+
+`instanceof` 로 넘겨받은 예외 객체의 타입을 확인하고, 타입에 맞는 메소드를 호출해서 해당 예외에 대한 HTTP 상태 코드를 설정한다.
+
+예를 들어 `ex` 객체가 `TypeMismatchException` 타입인 경우, `handleTypeMismatch()` 메소드를 호출하는데, 해당 메소드를 보면 `response.sendError(HttpServleResponse.SC_BAD_REQUEST)` 를 호출해서 응답 상태 코드로 400을 지정해주는 것을 확인할 수 있다.
