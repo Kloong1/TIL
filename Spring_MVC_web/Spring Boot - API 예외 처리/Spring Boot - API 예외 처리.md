@@ -180,3 +180,6 @@ public class DefaultHandlerExceptionResolver extends AbstractHandlerExceptionRes
 `instanceof` 로 넘겨받은 예외 객체의 타입을 확인하고, 타입에 맞는 메소드를 호출해서 해당 예외에 대한 HTTP 상태 코드를 설정한다.
 
 예를 들어 `ex` 객체가 `TypeMismatchException` 타입인 경우, `handleTypeMismatch()` 메소드를 호출하는데, 해당 메소드를 보면 `response.sendError(HttpServleResponse.SC_BAD_REQUEST)` 를 호출해서 응답 상태 코드로 400을 지정해주는 것을 확인할 수 있다.
+
+### ResponseStatusExceptionResolver
+`@ResponseStatus` 어노테이션이 있는 예외 혹은 `ResponseStatusException` 예외를 처리해서 HTTP 상태 코드를 지정해주는 역할을 한다.
