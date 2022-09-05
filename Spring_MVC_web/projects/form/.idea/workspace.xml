@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7e0b4674-f39f-4952-8b22-98556088aa02" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../01-타임리프_프로젝트_생성/01-타임리프_프로젝트_생성.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../02-타임리프_소개/02-타임리프_소개.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-타임리프_text_utext/03-타임리프_text_utext.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../03-타임리프_text_utext/스크린샷 2022-06-19 오후 5.48.47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../04-타임리프_변수_SpringEL/04-타임리프_변수_SpringEL.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../05-타임리프_기본_객체들/05-타임리프_기본_객체들.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../06-타임리프_유틸리티_객체_날짜/06-타임리프_유틸리티_객체_날짜.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../07-타임리프_URL링크/07-타임리프_URL링크.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../08-타임리프_리터럴/08-타임리프_리터럴.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../09-타임리프_연산/09-타임리프_연산.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../10-타임리프_속성값_설정/10-타임리프_속성값_설정.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../11-타임리프_반복/11-타임리프_반복.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../12-타임리프_if_unless_switch/12-타임리프_if_unless_switch.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../13-타임리프_주석/13-타임리프_주석.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../14-타임리프_블록/14-타임리프_블록.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../15-타임리프_자바스크립트_인라인/15-타임리프_자바스크립트_인라인.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../16-타임리프_템플릿_조각/16-타임리프_템플릿_조각.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../17-타임리프_템플릿_레이아웃/17-타임리프_템플릿_레이아웃.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../18-타임리프_스프링_통합과_폼/18-타임리프_스프링_통합과_폼.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../19-타임리프_입력_폼_처리/19-타임리프_입력_폼_처리.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../20-타임리프_체크박스_라디오_버튼_셀렉트_박스_사전준비/20-타임리프_체크박스_라디오_버튼_셀렉트_박스_사전준비.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../20-타임리프_체크박스_라디오_버튼_셀렉트_박스_사전준비/스크린샷 2022-06-28 오후 9.17.10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../21-타임리프_체크_박스_단일_선택/21-타임리프_체크_박스_단일_선택.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../22-타임리프-체크_박스_다중_선택/22-타임리프-체크_박스_다중_선택.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../22-타임리프-체크_박스_다중_선택/스크린샷 2022-06-29 오후 9.03.46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../23-타임리프_라디오_버튼/23-타임리프_라디오_버튼.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../24-타임리프_셀렉트_박스/24-타임리프_셀렉트_박스.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AyqkaZz3ZdyOCZWiaDuwEpxTa7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;d10ae707bbd11fd72b118cc745a8d62b&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="ItemServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="form.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="hello.itemservice.ItemServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e0b4674-f39f-4952-8b22-98556088aa02" name="Changes" comment="" />
+      <created>1655992316843</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655992316843</updated>
+      <workItem from="1655992318125" duration="833000" />
+      <workItem from="1656010202694" duration="29000" />
+      <workItem from="1656415775410" duration="5956000" />
+      <workItem from="1656490963147" duration="11569000" />
+      <workItem from="1662381425919" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
