@@ -380,7 +380,7 @@ public class HelloController {
 `@ExceptionHandler` 에는 마치 스프링 컨트롤러 메소드처럼 다양한 파라미터와 반환형을 지정할
 수 있다. 다음 공식 메뉴얼을 참고하자.
 
-https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-annexceptionhandler-args
+링크: https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-annexceptionhandler-args
 
 #### @ExceptionHandler API 예외 처리 흐름
 1. 컨트롤러에서 `IllegalArgumentException` 예외가 발생했지만 해당 예외를 처리하지 못하고 예외는 컨트롤러 밖으로 던져진다.
