@@ -1,2 +1,5 @@
+# DB files
 projects/h2
 projects/db
+
+.DS_Store
