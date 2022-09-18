@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.NoSuchElementException;
 
 /**
- * JDBC - Connection을 파라미터로 받는다
+ * JDBC - Connection 을 파라미터로 받는다
  */
 @Slf4j
 public class MemberRepositoryV2 {
@@ -93,7 +93,7 @@ public class MemberRepositoryV2 {
             log.error("db error", e);
             throw e;
         } finally {
-            //connection은 닫지 않는다
+            //Connection 은 닫지 않는다
             JdbcUtils.closeResultSet(rs);
             JdbcUtils.closeStatement(pstmt);
             //JdbcUtils.closeConnection(conn);
