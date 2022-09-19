@@ -50,9 +50,7 @@ public class MemberServiceV2 {
         Member toMember = memberRepository.findById(conn, toId);
 
         memberRepository.update(conn, fromId, fromMember.getMoney() - money);
-
         validation(toMember); //계좌 이체가 도중에 실패하는 상황 만들기
-
         memberRepository.update(conn, toId, toMember.getMoney() + money);
     }
 
