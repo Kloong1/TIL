@@ -17,9 +17,6 @@ import static hello.jdbc.connection.ConnectionConst.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-/**
- * Connection을 파라미터로 넘겨서 트랜잭션 적용
- */
 @Slf4j
 class MemberServiceV3_2Test {
 
