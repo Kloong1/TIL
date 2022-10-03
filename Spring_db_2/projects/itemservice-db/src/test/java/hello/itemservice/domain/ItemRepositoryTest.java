@@ -84,7 +84,7 @@ class ItemRepositoryTest {
         Item item1 = new Item("itemA-1", 10000, 10);
         Item item2 = new Item("itemA-2", 20000, 20);
         Item item3 = new Item("itemB-1", 30000, 30);
-        
+
         itemRepository.save(item1);
         itemRepository.save(item2);
         itemRepository.save(item3);
