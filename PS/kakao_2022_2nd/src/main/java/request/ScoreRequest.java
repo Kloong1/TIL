@@ -1,41 +1,45 @@
 package request;
 
-import parser.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 import static connection.ConnectionConst.BASE_URL;
 import static connection.HttpConst.*;
 
-public class GameResultRequest {
+public class ScoreRequest {
 
     private final URL url;
+    private final ObjectMapper objectMapper;
 
-    public GameResultRequest() throws IOException {
-        this.url = new URL(BASE_URL + "/game_result");
+    public ScoreRequest() throws IOException {
+        this.url = new URL(BASE_URL + "/score");
+        this.objectMapper = new ObjectMapper();
     }
 
-    public List<Map<String, Integer>> request(String authKey) throws IOException {
+    public void request(String authKey) throws IOException {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         conn.setRequestMethod("GET");
         conn.setRequestProperty(HEADER_AUTHORIZATION, authKey);
         conn.setRequestProperty(HEADER_CONTENT_TYPE, CONTENT_TYPE_JSON);
 
-        JsonParser<Map<String, List<Map<String, Integer>>>> jsonParser = new JsonParser<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        Map<String, List<Map<String, Integer>>> gameResultListMap = jsonParser.parse(br);
+
+        String line;
+        StringBuilder sb = new StringBuilder();
+
+        while ((line = br.readLine()) != null) {
+            sb.append(line).append('\n');
+        }
+
         br.close();
         conn.disconnect();
 
-        List<Map<String, Integer>> gameResultList = gameResultListMap.get("game_result");
-
-        return gameResultList;
+        System.out.println(sb.toString());
     }
 }

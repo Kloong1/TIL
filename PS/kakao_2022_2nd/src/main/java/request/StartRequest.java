@@ -39,7 +39,7 @@ public class StartRequest {
 
         JsonParser<Map<String, Object>> jsonParser = new JsonParser<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        Map<String, Object> jsonMap = jsonParser.parseAfterPrint(br);
+        Map<String, Object> jsonMap = jsonParser.parse(br);
 
         conn.disconnect();
 

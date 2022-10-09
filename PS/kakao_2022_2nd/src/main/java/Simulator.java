@@ -2,11 +2,10 @@ import grade.UserGradeSetter;
 import request.*;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Simulator {
+public class Simulator implements Runnable {
 
     private final StartRequest startRequest;
     private final UserInfoRequest userInfoRequest;
@@ -14,6 +13,8 @@ public class Simulator {
     private final GameResultRequest gameResultRequest;
     private final UserGradeSetter userGradeSetter;
     private final MatchRequest matchRequest;
+    private final ChangeGradeRequest changeGradeRequest;
+    private final ScoreRequest scoreRequest;
 
     private String authKey;
 
@@ -30,6 +31,8 @@ public class Simulator {
         this.gameResultRequest = new GameResultRequest();
         this.userGradeSetter = new UserGradeSetter();
         this.matchRequest = new MatchRequest();
+        this.changeGradeRequest = new ChangeGradeRequest();
+        this.scoreRequest = new ScoreRequest();
     }
 
     public void simulate() throws IOException {
@@ -39,25 +42,51 @@ public class Simulator {
         System.out.println("match");
         while (turn <= 555) {
             System.out.println("turn = " + turn);
-
+            
             waitingUserList = waitingLineRequest.request(authKey);
-            System.out.println(waitingUserList);
+//            System.out.println(waitingUserList);
 
             gameResultList = gameResultRequest.request(authKey);
-
-            for (Map<String, Integer> gameResult : gameResultList) {
-                System.out.println(gameResult);
-            }
 
             userGradeSetter.setGrade(userGradeMap, gameResultList);
 
             turn = matchRequest.request(waitingUserList, userGradeMap, authKey);
         }
+
+        while (turn < 595) {
+            System.out.println("turn = " + turn);
+            turn = matchRequest.request(null, userGradeMap, authKey);
+            gameResultList = gameResultRequest.request(authKey);
+            userGradeSetter.setGrade(userGradeMap, gameResultList);
+        }
+
+        System.out.println("turn = " + turn);
+        gameResultList = gameResultRequest.request(authKey);
+        userGradeSetter.setGrade(userGradeMap, gameResultList);
+
+        changeGradeRequest.request(userGradeMap, authKey);
+
+        scoreRequest.request(authKey);
     }
 
     private void initSimulate() throws IOException {
         authKey = startRequest.request(1);
+        System.out.println("authKey = " + authKey);
+
         userGradeMap = userInfoRequest.request(authKey);
+        for (int userId : userGradeMap.keySet()) {
+            userGradeMap.put(userId, 40_000); //평균
+        }
+
         turn = matchRequest.request(null, userGradeMap, authKey);
+    }
+
+    @Override
+    public void run() {
+        try {
+            simulate();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

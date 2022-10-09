@@ -31,7 +31,7 @@ public class WaitingLineRequest {
 
         JsonParser<Map<String, List<Map<String, Integer>>>> jsonParser = new JsonParser<>();
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        Map<String, List<Map<String, Integer>>> waitingUserListMap = jsonParser.parseAfterPrint(br);
+        Map<String, List<Map<String, Integer>>> waitingUserListMap = jsonParser.parse(br);
         br.close();
         conn.disconnect();
 
