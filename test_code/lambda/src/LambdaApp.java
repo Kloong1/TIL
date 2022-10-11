@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.Function;
 
 public class LambdaApp {
     public static void main(String[] args) {
@@ -19,5 +20,7 @@ public class LambdaApp {
         }
 
         list.forEach(e -> System.out.println("e = " + e));
+
+        MyFunction2 myFunction2 = name -> System.out.println("name = " + name);
     }
 }
