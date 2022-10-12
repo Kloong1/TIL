@@ -1,6 +1,6 @@
 # Lambda Expression
 
-## 서론 - 함수형 프로그래밍 언어
+## 0. 서론 - 함수형 프로그래밍 언어
 Java는 객체지향언어로 만들어졌지만, JDK 1.8 부터 추가된 다양한 기능으로 인해 객체지향언어인 동시에 함수형 언어가 되었다.
 
 Lambda expression, Stream 등을 잘 활용하면 Java에서도 함수형 프로그래밍이 가능하다.
@@ -139,7 +139,7 @@ public class MyClass {
 
 위와 같은 것들이 가능해진다. 지금 당장은 별로 쓸모 없어 보이는 것 같지만, 당장 Stream만 사용하더라도 위의 코드처럼 람다식을 매개변수로 넘기는 일이 부지기수이다. 적재적소에 사용하기만 하면 매우 편리하다는 것을 알 수 있을 것이다.
 
-## 4. java.util.function 패키지 - 함수형 인터페이스 모음
+### java.util.function 패키지 - 함수형 인터페이스 모음
 대부분의 메서드는 형태가 비슷하다. 일반적으로 0~2개의 매개변수를 가지고, 반환값은 없거나 1개이다. Generic을 사용하면 매개변수 타입이나 반환형이 달라도 상관 없다.
 
 그래서 Java는 `java.util.function` 패키지에 일반적으로 자주 쓰이는 형태의 함수형 인터페이스를 정의해두었다. 람다식을 쓸 때 매번 새로운 함수형 인터페이스를 정의할 필요 없이 이 패키지의 함수형 인터페이스를 가져다 쓰면 된다.
@@ -171,7 +171,7 @@ public interface Predicate<T> {
 }
 ```
 
-## 5. 메소드 참조(Method Reference)
+## 4. 메소드 참조(Method Reference)
 하나의 메서드만 호출하는 람다식은 메서드 참조를 통해서 더 간결하게 표현이 가능하다.
 
 ```Java
@@ -234,3 +234,7 @@ Java를 가지고 굳이 순수한 함수형 프로그래밍을 추구하지 않
 Stream과 람다식을 잘 조합하면 아주 간결하고 명확한 동시에, side-effect가 없고, stateless 하고, 데이터를 변경하지 않으며(immutable), lazy evaluation을 통해 최적화까지 가능한 코드를 작성할 수 있다.
 
 자세한 내용은 곧 포스팅할 예정인 Stream과 Optional에 대한 글을 보면 알 수 있을 것이다.
+
+#### 참고
+남궁 성, 『자바의 정석』, 도우출판(2016)
+[자바의 정석](https://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=249927409&utm_source=google&utm_medium=cpc&utm_campaign=book_domestic_majorbook_s_20210617_pc_cpc_paidsearch&utm_content=consider_34&utm_term=%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9D&utm_term=%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9D&gclid=CjwKCAjwqJSaBhBUEiwAg5W9p_zJ8fuTlad1BC4fy9Y2CZ4crFX5zON47142QInLYr-MzGapRF-NrxoCOmIQAvD_BwE)
