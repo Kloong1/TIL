@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
@@ -22,5 +23,20 @@ public class LambdaApp {
         list.forEach(e -> System.out.println("e = " + e));
 
         MyFunction2 myFunction2 = name -> System.out.println("name = " + name);
+
+        Integer[] integerArr = {5, 5, 3, 9, 2, 11};
+
+        Arrays.stream(integerArr) // Stream<Integer>
+                .filter(n -> n < 10) // 중간 연산을 연쇄적으로 적용
+                .distinct()
+                .sorted()
+                .limit(3)
+                .forEach(System.out::println); // 최종 연산
+
+        String[] strArr = {"1", "2", "3"};
+
+        Arrays.stream(strArr)
+                .map(str -> Integer.parseInt(str))
+                .forEach(System.out::print);
     }
 }
