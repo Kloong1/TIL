@@ -322,3 +322,8 @@ int sum = integerStream.reduce(0, (n1, n2) -> n1 + n2);
 List<String> strStream.collect(Collectors.toList());
 List<String> strStream.collect(Collectors.toArray(new String[]));
 ```
+
+
+#### 참고
+남궁 성, 『자바의 정석』, 도우출판(2016)
+[자바의 정석](https://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=249927409&utm_source=google&utm_medium=cpc&utm_campaign=book_domestic_majorbook_s_20210617_pc_cpc_paidsearch&utm_content=consider_34&utm_term=%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9D&utm_term=%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9D&gclid=CjwKCAjwqJSaBhBUEiwAg5W9p_zJ8fuTlad1BC4fy9Y2CZ4crFX5zON47142QInLYr-MzGapRF-NrxoCOmIQAvD_BwE)
