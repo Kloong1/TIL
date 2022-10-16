@@ -1,12 +1,11 @@
 # Optional
 
-## 0. 시작하기에 앞서
+## 0. 시작하기에 앞서 - 출처
 이 글은 책 "자바의 정석" 과 다음 3개의 링크를 참고해서 요약해 쓰는 글이다. 더 자세한 정보를 얻고 싶다면 "자바의 정석"과 다음 링크를 읽어보는 것을 추천한다(내 글보다 훨씬 좋다!).
 
 [자바8 Optional 1부: 빠져나올 수 없는 null 처리의 늪](https://www.daleseo.com/java8-optional-before/)
 [자바8 Optional 2부: null을 대하는 새로운 방법](https://www.daleseo.com/java8-optional-after/)
 [자바8 Optional 3부: Optional을 Optional답게](https://www.daleseo.com/java8-optional-effective/)
-
 
 ## 1. `java.lang.Optional<T>`
 `Optional<T>` 클래스는 "`null` 일 수도 있는 객체" 를 감싸는 일종의 래퍼 클래스이다.
@@ -16,6 +15,7 @@ Java의 고질적인 문제 중 하나는 바로 `null` 처리이다. Java를 �
 다음 코드를 살펴보자.
 
 ```Java
+/* 출처: https://www.daleseo.com/java8-optional-before */
 @Getter
 public class Order {
 	private Long id;
@@ -38,6 +38,7 @@ public class Address {
 주어진 데이터 모델에서 "주문"한 "회원"의 "도시" 를 알아내는 메소드인 `getCityOfMemberOfOrder()` 가 필요하다고 해보자.
 
 ```Java
+/* 출처: https://www.daleseo.com/java8-optional-before */
 public String getCityOfMemberOfOrder(Order order) {
 	return order.getMember().getAddress().getCity();
 }
@@ -48,6 +49,7 @@ Java를 써 본 사람이라면 위 코드가 얼마나 위험한 코드인지 �
 문제는 단순히 `Order` 객체를 넘겨받은 입장인 `getCityOfMemberOfOrder()` 메소드는 위 객체들이 `null` 인지 아닌지 알 방법이 없다. 따라서 `NullPointerException` 을 예방하려면 다음과 같이 `null` 체크를 해야한다.
 
 ```Java
+/* 출처: https://www.daleseo.com/java8-optional-before */
 public String getCityOfMemberOfOrder(Order order) {
 	if (order != null) {
 		Member member = order.getMember();
@@ -205,6 +207,7 @@ if (optionalMember.isPresent()) {
 이제 `getCityOfMemberOfOrder()` 에 `Optional` 을 적용해보자.
 
 ```Java
+/* 출처: https://www.daleseo.com/java8-optional-after */
 public Optional<String> getCityOfMemberFromOrder(Order order) {
 	Optional<Order> optionalOrder = Optional.ofNullable(order);
 	if (optionalOrder.isPresent()) {
@@ -245,6 +248,7 @@ public Optional<String> getCityOfMemberFromOrder(Order order) {
 예시 코드를 보면 바로 이해가 갈 것이다. `Optional` 을 "제대로" 사용해서 `getCityOfMemberOfOrder()` 메소드의 문제를 해결해보자.
 
 ```Java
+/* 출처: https://www.daleseo.com/java8-optional-effective */
 public Optional<String> getCityOfMemberOfOrder(Order order) {
 	return Optional.ofNullable(order)
 					.map(Order::getMember)
@@ -278,7 +282,7 @@ public <U> Optional<U> map(
 
 더 자세한 내용과 예제 코드는 아래 링크를 확인하길 바란다. 사실상 저 링크 첨부한 게 이 글의 본체이기 때문에 왠만하면 저 글을 읽는 것이 좋다 ㅎㅎ....
  
-#### 참고 - 링크 3개 꼭 읽어보시길!
+#### 출처 & 참고 - 링크 3개 꼭 읽어보시길!
 [자바8 Optional 1부: 빠져나올 수 없는 null 처리의 늪](https://www.daleseo.com/java8-optional-before/)
 [자바8 Optional 2부: null을 대하는 새로운 방법](https://www.daleseo.com/java8-optional-after/)
 [자바8 Optional 3부: Optional을 Optional답게](https://www.daleseo.com/java8-optional-effective/)
