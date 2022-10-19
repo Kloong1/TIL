@@ -1,5 +1,10 @@
 # Stream
 
+## 0. 시작하기에 앞서
+`Stream` 을 더 깊이 이해하고, `Stream` 의 장점을 피부로 느끼기 위해서는 람다식(Lambda Expression) 에 대한 이해가 필요하다. 람다식에 대해서 잘 모른다면 아래 링크를 참고하길 바란다.
+
+[람다식(Lambda Expression)](https://kloong.tistory.com/entry/Java-%EB%9E%8C%EB%8B%A4%EC%8B%9DLambda-Expression?category=1255092)
+
 ## 1. Stream 이란 무엇인가?
 스트림은 단어 그대로 **데이터의 흐름**이다.
 

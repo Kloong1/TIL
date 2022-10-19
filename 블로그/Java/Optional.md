@@ -7,6 +7,11 @@
 [자바8 Optional 2부: null을 대하는 새로운 방법](https://www.daleseo.com/java8-optional-after/)
 [자바8 Optional 3부: Optional을 Optional답게](https://www.daleseo.com/java8-optional-effective/)
 
+또 람다식과 `Stream` 에 대한 기본 지식이 없으면 이 글을 읽는 의미가 반감된다. 람다식과 스트림에 대해 잘 모른다면 아래 링크를 읽어본 뒤 이 글을 읽기 바란다.
+
+[람다식(Lambda Expression)](https://kloong.tistory.com/entry/Java-%EB%9E%8C%EB%8B%A4%EC%8B%9DLambda-Expression?category=1255092)
+[Stream](https://kloong.tistory.com/entry/Java-Stream?category=1255092)
+
 ## 1. `java.lang.Optional<T>`
 `Optional<T>` 클래스는 "`null` 일 수도 있는 객체" 를 감싸는 일종의 래퍼 클래스이다.
 
