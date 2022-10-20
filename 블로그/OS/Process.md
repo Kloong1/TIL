@@ -88,3 +88,5 @@ struct proc {
 	struct trapframe *tf; // Trap frame for the current interrup
 };
 ```
+
+## Paging
