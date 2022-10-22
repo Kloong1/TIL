@@ -53,6 +53,7 @@ OS는 프로세스 관리를 위해 프로세스의 정보가 들어있는 다�
 
 또 PCB(Process Control Block) 라는 구조체를 가지고 있다. PCB 에는 각각의 process의 context가 저장되어 있다.
 
+**proc.c(xv6 code)**
 ```C
 // the registers xv6 will save and restore
 // to stop and subsequently restart a process
