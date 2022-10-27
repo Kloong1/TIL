@@ -1,4 +1,4 @@
-# Process VS Thread
+# Thread
 
 ## Thread
 - **Process** : 실행중인 프로그램
