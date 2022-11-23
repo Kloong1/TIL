@@ -1,4 +1,4 @@
-# HTTP 응답 데이터 - Plain Text, HTML, API JSON
+# HTTP 응답 데이터 - Plain Text, HTML, JSON(API 응답)
 
 ##### HTTP 응답 메시지에는 주로 다음과 같은 형식의 내용을 담아서 전달한다.
 - 단순 텍스트 응답

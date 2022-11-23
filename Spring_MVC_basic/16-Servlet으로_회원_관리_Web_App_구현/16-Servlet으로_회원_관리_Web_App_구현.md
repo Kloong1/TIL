@@ -1,4 +1,4 @@
-# Servlet으로 회원 관리 Web App 구현
+# 순수 Servlet으로 회원 관리 Web App 구현
 순수 Servlet으로 회원 관리 웹 애플리케이션을 만들어보자.
 
 ## 회원 정보 입력
